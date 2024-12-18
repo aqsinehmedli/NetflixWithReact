@@ -1,8 +1,9 @@
 import React from 'react'
-import Entry from "./pages/components/Entry"
+import Landing from './pages/Landing'
+import Entry from './pages/components/Entry'
 const App = () => {
   return (
-    <Entry/>
+    <Landing/>
   )
 }
 
