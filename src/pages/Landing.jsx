@@ -2,11 +2,15 @@ import React, { useEffect } from 'react'
 import Entry from './components/Entry'
 import { useState } from 'react'
 import TrendingFilms from './components/TrendingFilms'
+import Arch from './components/Arch'
+import ReasonToJoin from './components/ReasonToJoin'
+import FAQ from './components/FAQ'
+import Footer from './components/Footer'
 const Landing = () => {
     const [modalOpen, setModalOpen] = useState(false)
     const [item, setItem] = useState(null)
     const [data, setData] = useState({})
-    const gettData = async () => {
+    const getData = async () => {
         try {
             const response = await fetch(`http://localhost:5001/api/v1/${item.media_type}/${item.id}`)
             const data = await response.json()
@@ -19,18 +23,21 @@ const Landing = () => {
     }
     useEffect(() => {
         if (item) {
+            console.log(item)
             setModalOpen(true)
-            gettData()
+            getData()
 
         }
     }, [item])
+    console.log(data)
     return (
-        <div className={`bg-black w-full relative ${modalOpen ? "h-screen overflow-hidden" : ""}`}>
+        <div className={`bg-black w-full relative ${modalOpen ? "h-auto overflow-hidden" : ""}`}>
             <Entry />
-            <div class="relative w-screen -mt-12 h-[50px] border-4 border-transparent bg-gradient-to-r from-pink-700 via-red-600 to-pink-700 bg-clip-border rounded-tl-[50%_100%] rounded-tr-[50%_100%]">
-                <div className="absolute -left-[4px] top-[1px] h-[50px] w-screen bg-gradient-to-b rounded-tl-[50%_90%] rounded-tr-[50%_90%] from-blue-950 from-10% to-black to-90%"></div>
-            </div>
+            <Arch />
             <TrendingFilms setModalOpen={setModalOpen} setItem={setItem} />
+            <ReasonToJoin/>
+            <FAQ/>
+            <Footer/>
             {
                 modalOpen && <div className='absolute left-0 top-0 w-screen h-screen bg-black/30 flex items-center justify-center'>
                     <div className='size-[620px] border-[1px] rounded-lg bg-zinc-900'>

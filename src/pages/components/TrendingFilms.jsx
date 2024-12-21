@@ -22,13 +22,13 @@ const TrendingFilms = ({setModalOpen,setItem}) => {
         getData()
     },[selectedOption])
   return (
-    <div className='w-full py-10 px-14 relative'>
+    <div className='w-auto ml-[80px] mr-[80px] relative no-scrollbar'>
         <h3 className='text-2xl text-white font-semibold mb-4'>Trending Now</h3>
         <CustomerSelect 
         selectedOption={selectedOption}
         setSelectedOption={setSelectedOption}
         options={options}/>
-        <div className='w-full h-screen flex gap-12 overflow-scroll overflow-hidden py-5 pl-7'>
+        <div className='w-auto h-auto no-scrollbar flex gap-12 overflow-scroll py-5 pl-7'>
             {data.map((item,index) => <MovieCards setModalOpen={setModalOpen} setItem={setItem} item={item} index={index}/>)}
         </div>
         
