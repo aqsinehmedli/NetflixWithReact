@@ -12,7 +12,9 @@ const Landing = () => {
     const [data, setData] = useState({})
     const getData = async () => {
         try {
-            const response = await fetch(`http://localhost:5001/api/v1/${item.media_type}/${item.id}`)
+            const response = await fetch(`http://localhost:5001/api/v1/${item.media_type}/${item.id}`,{
+                Accept:  "application/json"
+            })
             const data = await response.json()
             setData(data.content)
             console.log(data.content)

@@ -1,34 +1,37 @@
 import React from 'react'
 import FooterItem from './FooterItem'
+import { useTranslation } from 'react-i18next'
+
 const FooterColumn = () => {
+    const [t] = useTranslation()
     const items = [
         [
-            "FAQ",
-            "Investor Relations",
-            "Privacy",
-            "Speed Test"
+            "footerFAQ",
+            "footerInvestorRelations",
+            "footerPrivacy",
+            "footerSpeedTest"
         ],
         [
-            "Help Center",
-            "Jobs",
-            "Cookie Preferences",
-            "Legal Notices"
+            "footerHelpCenter",
+            "footerJobs",
+            "footerCookiePreferences",
+            "footerLegalNotices"
         ],
         [
-            "Account",
-            "Ways to Watch",
-            "Corporate Information",
-            "Only on Netflix"
+            "footerAccount",
+            "footerWaysToWatch",
+            "footerCorporateInformation",
+            "footerOnlyOnNetflix"
         ],
         [
-            "Media Center",
-            "Terms of Use",
-            "Contact Us"
+            "footerMediaCenter",
+            "footerTermsOfUse",
+            "footerContactUs"
         ]
     ]
   return (
     <div className='grid grid-cols-4 hover:cursor-pointer ml-[80px] mt-[44px] mr-[80px] gap-4"'>
-            <h4 className='font-semibold text-[rgba(255,255,255,0.7);] col-span-4 mb-[32px] underline'>Questions? Contact us.</h4>
+            <h4 className='font-semibold text-[rgba(255,255,255,0.7);] col-span-4 mb-[32px] underline'>{t('netflixQuestion')}</h4>
         {
             items.map(item => <FooterItem item={item}/>)
         }
