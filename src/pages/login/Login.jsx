@@ -21,7 +21,6 @@ const Login = () => {
                 body: JSON.stringify(formData)
             })
             const data = await response.json();
-            console.log(data.token)
 
             if (response.ok) {
                 addAccessToken(data.token); 
@@ -35,7 +34,7 @@ const Login = () => {
                     progress: undefined,
                     theme: "colored",
                     });
-                navigate("/"); 
+                navigate("/home"); 
             }else{
                 toast.error(data.message, {
                     position: "top-right",

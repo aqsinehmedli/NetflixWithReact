@@ -22,7 +22,6 @@ const Register = () => {
             })
             const data = await response.json();
             if (response.ok) {
-                console.log(salam)
                 addAccessToken(data.token);
                 toast.success(data.message, {
                     position: "top-right",

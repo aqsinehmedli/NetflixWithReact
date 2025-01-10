@@ -17,7 +17,6 @@ const Landing = () => {
             })
             const data = await response.json()
             setData(data.content)
-            console.log(data.content)
 
         } catch (error) {
             console.error(error)
@@ -25,13 +24,11 @@ const Landing = () => {
     }
     useEffect(() => {
         if (item) {
-            console.log(item)
             setModalOpen(true)
             getData()
 
         }
     }, [item])
-    console.log(data)
     return (
         <div className={`bg-black w-full relative ${modalOpen ? "h-auto overflow-hidden" : ""}`}>
             <Entry />
