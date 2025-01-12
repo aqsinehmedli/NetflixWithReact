@@ -15,7 +15,6 @@ const Footer = () => {
     <div className='bg-black w-full h-screen'>
       <h3 className='font-semibold text-[16px] pt-[64px] text-white text-center'>{t('ready')}</h3>
       <EmailInput />
-
       <FooterColumn />
       <div className='w-[30px] h-[35px] ml-[80px] mb-[100px] mt-[42px]'>
         <CustomerSelect selectedOption={selectedLanguages} setSelectedOption={setSelectedLanguages} options={language}
@@ -23,12 +22,12 @@ const Footer = () => {
         />
         <div className='w-[200px] text-white/70 font-semibold mt-[40px]'>
           <p className='text-white'>{t('netflixAz')}</p>
-
         </div>
       </div>
-
     </div>
   )
 }
 
 export default Footer
+
+

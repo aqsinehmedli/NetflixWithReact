@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Form from "common/Form";
-import Footer from "../components/Footer";
+import Footer from "../components/landing/Footer";
 import { useNavigate } from "react-router";
 import { useStore } from "zustand";
 import { themeStore } from "../../common/Store";
@@ -9,7 +9,6 @@ const Login = () => {
     const { addAccessToken } = useStore(themeStore);
     const navigate = useNavigate();
     const [formData, setFormData] = useState({});
-
     const login = async () => {
         try {
             const response = await fetch("http://localhost:5001/api/v1/auth/login", {
@@ -21,9 +20,8 @@ const Login = () => {
                 body: JSON.stringify(formData)
             })
             const data = await response.json();
-
             if (response.ok) {
-                addAccessToken(data.token); 
+                addAccessToken(data.token);
                 toast.success(data.message || "Login successful", {
                     position: "top-right",
                     autoClose: 5000,
@@ -33,9 +31,9 @@ const Login = () => {
                     draggable: true,
                     progress: undefined,
                     theme: "colored",
-                    });
-                navigate("/home"); 
-            }else{
+                });
+                navigate("/home");
+            } else {
                 toast.error(data.message, {
                     position: "top-right",
                     autoClose: 5000,
@@ -45,10 +43,8 @@ const Login = () => {
                     draggable: true,
                     progress: undefined,
                     theme: "colored",
-                   
-                    });
+                });
             }
-            
         } catch (error) {
             console.error("Error during login:", error);
         }
@@ -68,11 +64,8 @@ const Login = () => {
             type: "password",
             placeholder: "Enter your Password",
             inputStyle: "p-4 border-[1px] text-white border-zinc-400 rounded-[4px] bg-transparent",
-           
         },
     ];
-
-    // Form butonları
     const formButtons = [
         {
             title: "Sign In",
@@ -82,7 +75,7 @@ const Login = () => {
         {
             title: "New to Netflix? Sign up now",
             style: "text-zinc-300 mt-4 w-full mt-[25px]",
-            action: () => navigate("/register"), 
+            action: () => navigate("/register"),
         },
     ];
 

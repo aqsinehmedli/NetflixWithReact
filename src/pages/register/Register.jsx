@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Form from "common/Form";
-import Footer from "../components/Footer";
+import Footer from "../components/landing/Footer";
 import { useNavigate } from "react-router";
 import { useStore } from "zustand";
 import { themeStore } from "../../common/Store";
@@ -9,7 +9,6 @@ const Register = () => {
     const { addAccessToken } = useStore(themeStore);
     const navigate = useNavigate();
     const [formData, setFormData] = useState({});
-
     const register = async () => {
         try {
             const response = await fetch("http://localhost:5001/api/v1/auth/signup", {
@@ -34,25 +33,22 @@ const Register = () => {
                     theme: "colored",
                 });
                 navigate("/");
-            } else{
+            } else {
                 toast.error(data.message, {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-
-            });
-        }
-
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                });
+            }
         } catch (error) {
             console.error("Error during login:", error);
         }
     };
-
     const formItems = [
         {
             label: "",
@@ -88,7 +84,7 @@ const Register = () => {
             style: "text-zinc-300 mt-4 w-full mt-[25px]",
             action: () => navigate("/login"),
         },
-    ];
+    ]
 
     return (
         <>
@@ -102,7 +98,6 @@ const Register = () => {
                         alt="Netflix Logo"
                     />
                 </button>
-
                 <Form
                     headerText={{
                         title: "Sign Up",
@@ -116,7 +111,7 @@ const Register = () => {
             </div>
             <Footer />
         </>
-    );
-};
+    )
+}
 
 export default Register;
